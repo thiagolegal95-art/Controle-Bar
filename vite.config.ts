@@ -1,23 +1,19 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
-import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  build: {
+    // Aumenta o limite de aviso para 2000kb para acomodar bibliotecas de gráficos e ícones
+    chunkSizeWarningLimit: 2000,
+    rollupOptions: {
+      output: {
+        // Organiza dependências em chunks separados para melhor cache no navegador e performance no Vercel
+        manualChunks: {
+          'vendor-ui': ['lucide-react'],
+          'vendor-charts': ['recharts'],
+          'vendor-core': ['react', 'react-dom'],
+        },
       },
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      }
-    };
+    },
+  },
 });
