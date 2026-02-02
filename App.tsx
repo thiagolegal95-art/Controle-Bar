@@ -74,7 +74,7 @@ const App = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white rounded-full blur-[120px]" />
         </div>
 
-        <div className="max-w-md w-full bg-black rounded-[3rem] p-10 border border-zinc-800 shadow-[0_0_50px_rgba(255,255,255,0.05)] flex flex-col items-center text-center relative z-10">
+        <div className="max-w-md w-full bg-black rounded-[3rem] p-10 border border-zinc-800 shadow-[0_0_50px_rgba(255,255,255,0.05)] flex flex-col items-center text-center relative z-10 animate-in fade-in zoom-in duration-500">
           <div className="w-36 h-36 rounded-full border-4 border-zinc-800 p-1 mb-8 shadow-2xl bg-zinc-900 overflow-hidden">
             <img 
               src={LOGO_URL} 
